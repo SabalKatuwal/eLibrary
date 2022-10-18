@@ -10,6 +10,7 @@ import SwiftUI
 struct bookListView: View {
     var body: some View {
         Text("Here will be list of books")
+        //fetch data from Book and entry in firebase
     }
 }
 

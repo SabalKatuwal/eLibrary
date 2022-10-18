@@ -13,7 +13,7 @@ enum Tabs: Int{
 }
 
 struct tabBar: View {
-    @Binding var selectedTab:Tabs
+    @Binding var selectedTab:Tabs    
     var body: some View {
         HStack(alignment: .center){
             Button {
