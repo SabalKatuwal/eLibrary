@@ -8,10 +8,26 @@
 import SwiftUI
 
 struct homeView: View {
+    @State var selectedTab: Tabs = .home    //onboardingView
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        if selectedTab == .home{
+            bookListView()
+        }else {
+            profileView()
+        }
+        
+        Spacer()
+        
+        tabBar(selectedTab: $selectedTab)
+        
     }
+    
 }
+
+
+
+
 
 struct homeView_Previews: PreviewProvider {
     static var previews: some View {
