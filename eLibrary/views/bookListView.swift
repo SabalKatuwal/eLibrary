@@ -18,7 +18,21 @@ struct bookListView: View {
         NavigationView {
             List(dataManager.books){ item in
                 HStack {
-                    Text(item.name)
+                    VStack(alignment: .leading){
+                        Text(item.name)
+                            .font(.headline)
+                        Text(item.author)
+                            .font(.subheadline)
+                        
+                    }
+                    Spacer()
+                    //update book can only be done by staff
+                    Button {
+                        dataManager.updateBook(bookToUpdate: item)
+                    } label: {
+                        Image(systemName: "pencil")
+                    }
+                    .buttonStyle(BorderlessButtonStyle())
                     
                     //***deleting can only be donw by staff
                     Button {
@@ -26,9 +40,10 @@ struct bookListView: View {
                     } label: {
                         Image(systemName: "minus.circle")
                     }
-
+                    .buttonStyle(BorderlessButtonStyle())
+                    
                 }
-                }
+            }
             .navigationTitle("Books")
             .navigationBarItems(trailing: Button(action: {
                 //add
@@ -43,9 +58,9 @@ struct bookListView: View {
         
         
     }
-//    init(){
-//        dataManager.fetchBooks()
-//    }
+    //    init(){
+    //        dataManager.fetchBooks()
+    //    }
 }
 
 

@@ -77,12 +77,13 @@ class booksDataManager: ObservableObject{
     func updateBook(bookToUpdate: Book){
         let db = Firestore.firestore()
         //set the data to update
-        db.collection("Books").document(bookToUpdate.id).setData(["name":bookToUpdate], merge: true){error in
+        db.collection("Books").document(bookToUpdate.id).setData(["name":"updated  \(bookToUpdate.name)"], merge: true){error in
             if error == nil{
                 self.fetchBooks()
             }
         }
     }
+    
 }
 
 

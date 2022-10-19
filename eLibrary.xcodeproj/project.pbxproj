@@ -23,6 +23,8 @@
 		A6A30D2928FEA3BA00D8B875 /* login.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D2828FEA3BA00D8B875 /* login.swift */; };
 		A6A30D2B28FFC1BE00D8B875 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D2A28FFC1BE00D8B875 /* Book.swift */; };
 		A6A30D3028FFE14300D8B875 /* addBookView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D2F28FFE14300D8B875 /* addBookView.swift */; };
+		A6A30D3229001CC400D8B875 /* searchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D3129001CC400D8B875 /* searchBarView.swift */; };
+		A6A30D352900264A00D8B875 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D342900264A00D8B875 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		A6A30D2828FEA3BA00D8B875 /* login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = login.swift; sourceTree = "<group>"; };
 		A6A30D2A28FFC1BE00D8B875 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		A6A30D2F28FFE14300D8B875 /* addBookView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addBookView.swift; sourceTree = "<group>"; };
+		A6A30D3129001CC400D8B875 /* searchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBarView.swift; sourceTree = "<group>"; };
+		A6A30D342900264A00D8B875 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +84,7 @@
 				A6A30D1628FDB04C00D8B875 /* models */,
 				A6A30D0E28FD4F3800D8B875 /* views */,
 				A6A30D2D28FFC26400D8B875 /* viewModel */,
+				A6A30D332900262600D8B875 /* extentions */,
 				A68CF5A928CDCEAB0032993E /* Assets.xcassets */,
 				A68CF5B328CDD1270032993E /* GoogleService-Info.plist */,
 				A68CF5AB28CDCEAB0032993E /* Preview Content */,
@@ -100,6 +105,7 @@
 			children = (
 				A6A30D1428FDAB8B00D8B875 /* homeView.swift */,
 				A6A30D2628FE47B500D8B875 /* profileView.swift */,
+				A6A30D3129001CC400D8B875 /* searchBarView.swift */,
 				A6A30D2428FE46E600D8B875 /* bookListView.swift */,
 				A6A30D2F28FFE14300D8B875 /* addBookView.swift */,
 				A6A30D1F28FE2A9700D8B875 /* tabBar */,
@@ -139,6 +145,14 @@
 				A6A30D2828FEA3BA00D8B875 /* login.swift */,
 			);
 			path = viewModel;
+			sourceTree = "<group>";
+		};
+		A6A30D332900262600D8B875 /* extentions */ = {
+			isa = PBXGroup;
+			children = (
+				A6A30D342900264A00D8B875 /* Color.swift */,
+			);
+			path = extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +233,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6A30D3229001CC400D8B875 /* searchBarView.swift in Sources */,
 				A6A30D1A28FDB23D00D8B875 /* booksDataManager.swift in Sources */,
 				A6A30D3028FFE14300D8B875 /* addBookView.swift in Sources */,
 				A6A30D2928FEA3BA00D8B875 /* login.swift in Sources */,
+				A6A30D352900264A00D8B875 /* Color.swift in Sources */,
 				A68CF5A828CDCEAA0032993E /* ContentView.swift in Sources */,
 				A68CF5A628CDCEAA0032993E /* eLibraryApp.swift in Sources */,
 				A6A30D2128FE2ABC00D8B875 /* tabBar.swift in Sources */,
@@ -363,6 +379,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -391,6 +408,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

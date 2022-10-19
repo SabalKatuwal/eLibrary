@@ -33,12 +33,12 @@ struct addBookView: View {
             Button {
                 dataManager.addBooks(name: name, genere: genere, author: author, numberOfBooks: numberOfBooks, ISBN: ISBN)
                 
-//                //clear the textfield
-//                name = ""
-//                author = ""
-//                genere = ""
-//                numberOfBooks = ""
-//                ISBN = ""
+                //clear the textfield
+                name = ""
+                author = ""
+                genere = ""
+                numberOfBooks = ""
+                ISBN = ""
                 
             } label: {
                 Text("ADD BOOK")
