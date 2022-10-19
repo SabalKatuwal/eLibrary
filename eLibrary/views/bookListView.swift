@@ -16,43 +16,47 @@ struct bookListView: View {
     var body: some View {
         
         NavigationView {
-            List(dataManager.books){ item in
-                HStack {
-                    VStack(alignment: .leading){
-                        Text(item.name)
-                            .font(.headline)
-                        Text(item.author)
-                            .font(.subheadline)
+            VStack {
+                searchBarView()
+                
+                List(dataManager.books){ item in
+                    HStack {
+                        VStack(alignment: .leading){
+                            Text(item.name)
+                                .font(.headline)
+                            Text(item.author)
+                                .font(.subheadline)
+                            
+                        }
+                        Spacer()
+                        //update book can only be done by staff
+                        Button {
+                            dataManager.updateBook(bookToUpdate: item)
+                        } label: {
+                            Image(systemName: "pencil")
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
+                        
+                        //***deleting can only be donw by staff
+                        Button {
+                            dataManager.deleteBook(bookToDelete: item)
+                        } label: {
+                            Image(systemName: "minus.circle")
+                        }
+                        .buttonStyle(BorderlessButtonStyle())
                         
                     }
-                    Spacer()
-                    //update book can only be done by staff
-                    Button {
-                        dataManager.updateBook(bookToUpdate: item)
-                    } label: {
-                        Image(systemName: "pencil")
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                    
-                    //***deleting can only be donw by staff
-                    Button {
-                        dataManager.deleteBook(bookToDelete: item)
-                    } label: {
-                        Image(systemName: "minus.circle")
-                    }
-                    .buttonStyle(BorderlessButtonStyle())
-                    
                 }
+                .navigationTitle("Books")
+                .navigationBarItems(trailing: Button(action: {
+                    //add
+                    showPopup.toggle()
+                }, label: {
+                    Image(systemName: "plus")
+                }) )
+                .sheet(isPresented: $showPopup){
+                    addBookView()
             }
-            .navigationTitle("Books")
-            .navigationBarItems(trailing: Button(action: {
-                //add
-                showPopup.toggle()
-            }, label: {
-                Image(systemName: "plus")
-            }) )
-            .sheet(isPresented: $showPopup){
-                addBookView()
             }
         }
         

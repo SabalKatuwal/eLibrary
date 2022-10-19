@@ -130,16 +130,16 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 
-//this piece of code will help to write placeholders and its logic
-extension View {
-    func placeholder<Content: View>(
-        when shouldShow: Bool,
-        alignment: Alignment = .leading,
-        @ViewBuilder placeholder: () -> Content) -> some View {
-
-        ZStack(alignment: alignment) {
-            placeholder().opacity(shouldShow ? 1 : 0)
-            self
-        }
-    }
-}
+////this piece of code will help to write placeholders and its logic of contentView(it is moved to extension folder
+//extension View {
+//    func placeholder<Content: View>(
+//        when shouldShow: Bool,
+//        alignment: Alignment = .leading,
+//        @ViewBuilder placeholder: () -> Content) -> some View {
+//
+//        ZStack(alignment: alignment) {
+//            placeholder().opacity(shouldShow ? 1 : 0)
+//            self
+//        }
+//    }
+//}
