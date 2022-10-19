@@ -8,10 +8,34 @@
 import SwiftUI
 
 struct bookListView: View {
+    @EnvironmentObject var dataManager:booksDataManager
+    
+    
+    @State private var showPopup = false
+    
     var body: some View {
-        Text("Here will be list of books")
-        //fetch data from Book and entry in firebase
+        
+        NavigationView {
+            List(dataManager.books){ item in
+                    Text(item.name)
+                }
+            .navigationTitle("Books")
+            .navigationBarItems(trailing: Button(action: {
+                //add
+                showPopup.toggle()
+            }, label: {
+                Image(systemName: "plus")
+            }) )
+            .sheet(isPresented: $showPopup){
+                addBookView()
+            }
+        }
+        
+        
     }
+//    init(){
+//        dataManager.fetchBooks()
+//    }
 }
 
 

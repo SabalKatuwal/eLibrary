@@ -2,9 +2,10 @@
 //  Book.swift
 //  eLibrary
 //
-//  Created by Sabal on 10/17/22.
+//  Created by Sabal on 10/19/22.
 //
 
+import Foundation
 import SwiftUI
 
 struct Book:Identifiable{
@@ -13,6 +14,6 @@ struct Book:Identifiable{
     var genere: String
     var author: String
     var numberOfBooks: String
-    var uuid: String
+    var ISBN: String
     
 }

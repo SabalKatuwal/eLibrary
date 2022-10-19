@@ -12,6 +12,10 @@ struct ContentView: View {
     @State private var password = ""
     @State private var userIsLoggedIn = false
     
+//    @EnvironmentObject var user:userLogin
+    //then use user.isUserLoggedIn method below
+    
+    
     var body: some View {
         if userIsLoggedIn{
             homeView()

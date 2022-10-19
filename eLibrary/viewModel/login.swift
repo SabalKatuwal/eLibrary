@@ -22,4 +22,4 @@ class staffLogin: ObservableObject{
     @Published var isStaffLoggedIn = false
 }
 
-//ObservableObject is not used yet
+//use environmentobject

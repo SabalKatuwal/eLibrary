@@ -13,7 +13,8 @@ enum Tabs: Int{
 }
 
 struct tabBar: View {
-    @Binding var selectedTab:Tabs    
+    @Binding var selectedTab:Tabs
+    
     var body: some View {
         HStack(alignment: .center){
             Button {
@@ -31,6 +32,8 @@ struct tabBar: View {
             //this button should appear for staff only
             Button {
                 //add books
+        
+                
             } label: {
                 VStack(alignment: .center, spacing: 4){
                     Image(systemName: "plus.circle.fill")
