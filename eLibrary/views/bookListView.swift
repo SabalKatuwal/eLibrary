@@ -17,7 +17,17 @@ struct bookListView: View {
         
         NavigationView {
             List(dataManager.books){ item in
+                HStack {
                     Text(item.name)
+                    
+                    //***deleting can only be donw by staff
+                    Button {
+                        dataManager.deleteBook(bookToDelete: item)
+                    } label: {
+                        Image(systemName: "minus.circle")
+                    }
+
+                }
                 }
             .navigationTitle("Books")
             .navigationBarItems(trailing: Button(action: {

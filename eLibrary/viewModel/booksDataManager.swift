@@ -7,7 +7,7 @@
 
 import SwiftUI
 import Firebase
-import FirebaseFirestore
+
 
 class booksDataManager: ObservableObject{
     @Published var books = [Book]()
@@ -51,6 +51,35 @@ class booksDataManager: ObservableObject{
                 }
             }else{
                 print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func deleteBook(bookToDelete:Book){
+        let db = Firestore.firestore()
+        db.collection("Books").document(bookToDelete.id).delete { error in
+            if error == nil{
+                
+                //update the UI from main thread
+                DispatchQueue.main.async {
+                    //remove the book that is just deleted from UI
+                    self.books.removeAll { Book in
+                        return Book.id == bookToDelete.id
+                    }
+                    
+                }
+            }else{
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func updateBook(bookToUpdate: Book){
+        let db = Firestore.firestore()
+        //set the data to update
+        db.collection("Books").document(bookToUpdate.id).setData(["name":bookToUpdate], merge: true){error in
+            if error == nil{
+                self.fetchBooks()
             }
         }
     }
