@@ -14,17 +14,31 @@ struct searchBarView: View {
     var body: some View {
         HStack{
             Image(systemName: "magnifyingglass")
-                //.foregroundColor(Color.theme.secondaryText)
+            
+                .foregroundColor(searchText.isEmpty ? Color.theme.secondaryText : Color.theme.accent)
+            
             TextField("Search by Book name", text: $searchText)
+                .foregroundColor(Color.theme.accent)
+                .overlay(
+                    Image(systemName: "xmark.circle.fill")
+                        .padding()
+                        .offset(x: 10)
+                        .foregroundColor(Color.theme.accent)
+                        .opacity(searchText.isEmpty ? 0.0 : 1.0)
+                        .onTapGesture {
+                            searchText = ""
+                        }
+                    , alignment: .trailing
+                )
                 
         }
         .font(.headline)
         .padding()
         .background{
             RoundedRectangle(cornerRadius: 25)
-                .foregroundColor(.brown)
-                //.fill(Color.theme.background)
-                //shadow(color: Color.theme.accent.opacity(0.15),radius: 0, x: 0, y: 0)
+                .fill(Color.theme.background)
+                .shadow(color: Color.theme.accent.opacity(0.15),radius: 10, x: 0, y: 0)
+                
         }
         .padding()
         
@@ -33,6 +47,17 @@ struct searchBarView: View {
 
 struct searchBarView_Previews: PreviewProvider {
     static var previews: some View {
-        searchBarView()
+        Group{
+            searchBarView()
+                .preferredColorScheme(.light)
+                .previewLayout(.sizeThatFits)
+            
+            searchBarView()
+                .preferredColorScheme(.dark)
+                .previewLayout(.sizeThatFits)
+        }
+        
+        
+            
     }
 }
