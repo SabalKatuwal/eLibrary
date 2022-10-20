@@ -26,6 +26,8 @@
 		A6A30D3229001CC400D8B875 /* searchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D3129001CC400D8B875 /* searchBarView.swift */; };
 		A6A30D352900264A00D8B875 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D342900264A00D8B875 /* Color.swift */; };
 		A6A30D37290033D900D8B875 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D36290033D900D8B875 /* View.swift */; };
+		A6A30D3A29014C0D00D8B875 /* scanQRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D3929014C0D00D8B875 /* scanQRView.swift */; };
+		A6A30D3E29014E1A00D8B875 /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = A6A30D3D29014E1A00D8B875 /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,8 @@
 		A6A30D3129001CC400D8B875 /* searchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchBarView.swift; sourceTree = "<group>"; };
 		A6A30D342900264A00D8B875 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		A6A30D36290033D900D8B875 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		A6A30D3929014C0D00D8B875 /* scanQRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = scanQRView.swift; sourceTree = "<group>"; };
+		A6A30D3B29014D5D00D8B875 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			files = (
 				A6A30D1128FD52C700D8B875 /* FirebaseAuth in Frameworks */,
 				A6A30D1328FD52C700D8B875 /* FirebaseFirestore in Frameworks */,
+				A6A30D3E29014E1A00D8B875 /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +86,7 @@
 		A68CF5A428CDCEAA0032993E /* eLibrary */ = {
 			isa = PBXGroup;
 			children = (
+				A6A30D3B29014D5D00D8B875 /* Info.plist */,
 				A68CF5A528CDCEAA0032993E /* eLibraryApp.swift */,
 				A68CF5A728CDCEAA0032993E /* ContentView.swift */,
 				A6A30D1628FDB04C00D8B875 /* models */,
@@ -105,6 +111,7 @@
 		A6A30D0E28FD4F3800D8B875 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				A6A30D3829014BCC00D8B875 /* scanQR */,
 				A6A30D1428FDAB8B00D8B875 /* homeView.swift */,
 				A6A30D2628FE47B500D8B875 /* profileView.swift */,
 				A6A30D3129001CC400D8B875 /* searchBarView.swift */,
@@ -158,6 +165,14 @@
 			path = extentions;
 			sourceTree = "<group>";
 		};
+		A6A30D3829014BCC00D8B875 /* scanQR */ = {
+			isa = PBXGroup;
+			children = (
+				A6A30D3929014C0D00D8B875 /* scanQRView.swift */,
+			);
+			path = scanQR;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,6 +192,7 @@
 			packageProductDependencies = (
 				A6A30D1028FD52C700D8B875 /* FirebaseAuth */,
 				A6A30D1228FD52C700D8B875 /* FirebaseFirestore */,
+				A6A30D3D29014E1A00D8B875 /* CodeScanner */,
 			);
 			productName = eLibrary;
 			productReference = A68CF5A228CDCEAA0032993E /* eLibrary.app */;
@@ -208,6 +224,7 @@
 			mainGroup = A68CF59928CDCEAA0032993E;
 			packageReferences = (
 				A6A30D0F28FD52C700D8B875 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				A6A30D3C29014E1A00D8B875 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = A68CF5A328CDCEAA0032993E /* Products */;
 			projectDirPath = "";
@@ -243,6 +260,7 @@
 				A6A30D352900264A00D8B875 /* Color.swift in Sources */,
 				A68CF5A828CDCEAA0032993E /* ContentView.swift in Sources */,
 				A68CF5A628CDCEAA0032993E /* eLibraryApp.swift in Sources */,
+				A6A30D3A29014C0D00D8B875 /* scanQRView.swift in Sources */,
 				A6A30D2128FE2ABC00D8B875 /* tabBar.swift in Sources */,
 				A6A30D1528FDAB8B00D8B875 /* homeView.swift in Sources */,
 				A6A30D2328FE3D0000D8B875 /* tabBarButton.swift in Sources */,
@@ -380,12 +398,15 @@
 				DEVELOPMENT_ASSET_PATHS = "\"eLibrary/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = eLibrary/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "we need to scan QR code";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -409,12 +430,15 @@
 				DEVELOPMENT_ASSET_PATHS = "\"eLibrary/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = eLibrary/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "we need to scan QR code";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -460,6 +484,14 @@
 				kind = branch;
 			};
 		};
+		A6A30D3C29014E1A00D8B875 /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -472,6 +504,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A6A30D0F28FD52C700D8B875 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;
+		};
+		A6A30D3D29014E1A00D8B875 /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A6A30D3C29014E1A00D8B875 /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
