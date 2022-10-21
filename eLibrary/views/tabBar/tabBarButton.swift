@@ -29,6 +29,8 @@ struct tabBarButton: View {
                 Text(buttonName)
             }
             .frame(width: geo.size.width, height: geo.size.height)
+            
+            //the code below will add design to button- neumorphic
         }
     }
 }

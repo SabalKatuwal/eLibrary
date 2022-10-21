@@ -10,7 +10,7 @@ import CodeScanner
 
 struct scanQRView: View {
     @State private var isPresentingScanner = false
-    @State var scannedResult:String = "Scanned code will appear here"
+    @State var scannedResult:String = "Scan result will appear here"
     
     var scannerSheet: some View{
         CodeScannerView(codeTypes: [.qr],
@@ -27,7 +27,19 @@ struct scanQRView: View {
     
     var body: some View {
         VStack {
-            Text("Hello, World!")
+        
+            
+            Text(scannedResult)
+                .foregroundColor(Color.theme.accent)
+                .background(
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(Color.theme.secondaryText)
+                        
+                )
+                .frame(width: 350, height: 40)
+                .shadow(color: .black, radius: 1, x: 0, y: 0)
+            
+            scannerSheet
         }
     }
 }
