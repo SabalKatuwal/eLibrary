@@ -5,6 +5,7 @@
 //  Created by Sabal on 10/19/22.
 //
 
+/// this view is currently not used its alternative .searchable() is used in bookListView
 import SwiftUI
 
 struct searchBarView: View {
@@ -12,6 +13,7 @@ struct searchBarView: View {
     @State var searchText:String = ""
     
     var body: some View {
+        
         HStack{
             Image(systemName: "magnifyingglass")
             

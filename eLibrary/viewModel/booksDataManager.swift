@@ -31,7 +31,7 @@ class booksDataManager: ObservableObject{
     }
     
     
-    //fetch function
+    //fetch/get book function
     func fetchBooks(){
         
         let db = Firestore.firestore()

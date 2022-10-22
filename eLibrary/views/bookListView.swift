@@ -12,42 +12,49 @@ struct bookListView: View {
     
     
     @State private var showPopup = false
+    @State private var searchText = ""
     
     var body: some View {
         
         NavigationView {
             VStack {
-                searchBarView()
+                //searchBarView()
                 
-                List(dataManager.books){ item in
-                    HStack {
-                        VStack(alignment: .leading){
-                            Text(item.name)
-                                .font(.headline)
-                            Text(item.author)
-                                .font(.subheadline)
+                List(dataManager.books.filter{(self.searchText.isEmpty ? true : $0.name.localizedCaseInsensitiveContains(self.searchText))}, id: \.id){ item in
+                    
+                    NavigationLink(destination: bookDetailView(data: item)){
+                        HStack {
+                            VStack(alignment: .leading){
+                                Text(item.name)
+                                    .font(.headline)
+                                Text(item.author)
+                                    .font(.subheadline)
+                                
+                            }
+                            Spacer()
+                            //update book can only be done by staff
+                            Button {
+                                dataManager.updateBook(bookToUpdate: item)
+                            } label: {
+                                Image(systemName: "pencil")
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
+                            
+                            //***deleting can only be donw by staff
+                            Button {
+                                dataManager.deleteBook(bookToDelete: item)
+                            } label: {
+                                Image(systemName: "minus.circle")
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
                             
                         }
-                        Spacer()
-                        //update book can only be done by staff
-                        Button {
-                            dataManager.updateBook(bookToUpdate: item)
-                        } label: {
-                            Image(systemName: "pencil")
-                        }
-                        .buttonStyle(BorderlessButtonStyle())
-                        
-                        //***deleting can only be donw by staff
-                        Button {
-                            dataManager.deleteBook(bookToDelete: item)
-                        } label: {
-                            Image(systemName: "minus.circle")
-                        }
-                        .buttonStyle(BorderlessButtonStyle())
-                        
                     }
+                    
+                    
                 }
                 .navigationTitle("Books")
+                .searchable(text: $searchText)
                 .navigationBarItems(trailing: Button(action: {
                     //add
                     showPopup.toggle()
@@ -56,8 +63,10 @@ struct bookListView: View {
                 }) )
                 .sheet(isPresented: $showPopup){
                     addBookView()
+                }
+                
             }
-            }
+            
         }
         
         
