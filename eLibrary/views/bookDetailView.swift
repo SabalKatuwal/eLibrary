@@ -8,12 +8,10 @@
 import SwiftUI
 
 struct bookDetailView: View {
-    //    let data:booksDataManager
     let data: Book
     var body: some View {
-        VStack{
+        VStack(spacing: 5){
             Text("Book Name: \(data.name)")
-            
             Text("Author: \(data.author)")
             Text("Genere: \(data.genere)")
             Text("ISBN: \(data.ISBN)")

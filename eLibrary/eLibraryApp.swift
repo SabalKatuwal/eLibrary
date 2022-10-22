@@ -10,7 +10,7 @@ import Firebase
 
 @main
 struct eLibraryApp: App {
-    @StateObject var BooksDataManager = booksDataManager()
+//    @StateObject var BooksDataManager = booksDataManager()
     
     init(){
         FirebaseApp.configure()
@@ -18,8 +18,9 @@ struct eLibraryApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(BooksDataManager)
+            splashScreenView()
+            
+            ///below code is for ContentView
                 //.environmentObject(userLogin())  //also staffLogin()
         }
     }
