@@ -92,12 +92,6 @@ struct bookAssignView: View {
             
             
         }
-        
-        
-        
-        
-        
-        
     }
 }
 

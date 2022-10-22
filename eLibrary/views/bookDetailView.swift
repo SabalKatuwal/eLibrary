@@ -8,15 +8,38 @@
 import SwiftUI
 
 struct bookDetailView: View {
-//    let data:booksDataManager
+    //    let data:booksDataManager
     let data: Book
     var body: some View {
         VStack{
-//            List(data.books){ item in
-//                Text(item.name)
-//            }
-            Text(data.name)
+            Text("Book Name: \(data.name)")
+            
+            Text("Author: \(data.author)")
+            Text("Genere: \(data.genere)")
+            Text("ISBN: \(data.ISBN)")
+            Text("Number of available Books: \(data.numberOfBooks)")
         }
+        .font(.headline)
+        .frame(width: 400 , height: 200)
+        .background(
+            ZStack {
+                Color.theme.dropShadow
+                RoundedRectangle(cornerRadius: 50, style: .continuous)
+                    .foregroundColor(.white)
+                    .blur(radius: 4)
+                    .offset(x: -8, y: -8)
+                
+                RoundedRectangle(cornerRadius: 50, style: .continuous)
+                    .fill(
+                        LinearGradient(colors: [Color.theme.dropShadow, .white], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    )
+                    .padding(2)
+                    .blur(radius: 2)
+            }
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
+        .shadow(color: Color.theme.dropShadow, radius: 20, x: 20, y: 20)
+        .shadow(color: .white, radius: 20, x: -20, y: -20)
     }
 }
 
