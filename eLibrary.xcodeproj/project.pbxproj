@@ -33,6 +33,7 @@
 		A6A30D462901862700D8B875 /* bookAssignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D452901862700D8B875 /* bookAssignView.swift */; };
 		A6A30D482903E40D00D8B875 /* bookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D472903E40D00D8B875 /* bookDetailView.swift */; };
 		A6A30D4A290426BC00D8B875 /* splashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D49290426BC00D8B875 /* splashScreenView.swift */; };
+		A6A30D4C2905497E00D8B875 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D4B2905497E00D8B875 /* loginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		A6A30D452901862700D8B875 /* bookAssignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookAssignView.swift; sourceTree = "<group>"; };
 		A6A30D472903E40D00D8B875 /* bookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookDetailView.swift; sourceTree = "<group>"; };
 		A6A30D49290426BC00D8B875 /* splashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreenView.swift; sourceTree = "<group>"; };
+		A6A30D4B2905497E00D8B875 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 			children = (
 				A6A30D1428FDAB8B00D8B875 /* homeView.swift */,
 				A6A30D49290426BC00D8B875 /* splashScreenView.swift */,
+				A6A30D4B2905497E00D8B875 /* loginView.swift */,
 				A6A30D412901561300D8B875 /* homeViewStaff.swift */,
 				A6A30D3129001CC400D8B875 /* searchBarView.swift */,
 				A6A30D2428FE46E600D8B875 /* bookListView.swift */,
@@ -300,6 +303,7 @@
 				A6A30D2328FE3D0000D8B875 /* tabBarButton.swift in Sources */,
 				A6A30D2528FE46E600D8B875 /* bookListView.swift in Sources */,
 				A6A30D442901570F00D8B875 /* tabBarStaff.swift in Sources */,
+				A6A30D4C2905497E00D8B875 /* loginView.swift in Sources */,
 				A6A30D2B28FFC1BE00D8B875 /* Book.swift in Sources */,
 				A6A30D37290033D900D8B875 /* View.swift in Sources */,
 				A6A30D462901862700D8B875 /* bookAssignView.swift in Sources */,

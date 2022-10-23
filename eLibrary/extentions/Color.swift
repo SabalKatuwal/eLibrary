@@ -18,6 +18,7 @@ struct ColorTheme{
     let secondaryText = Color("SecondaryTextColor")
     let dropShadow = Color("dropShadow")
     let backColor = Color("BackColor")
+    let textFieldColor = Color("TextFieldColor")
     
 }
 
