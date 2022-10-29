@@ -14,8 +14,10 @@ struct splashScreenView: View {
     var body: some View {
         if isActive{
             //view after splash screen
-            ContentView()
-                .environmentObject(booksDataManager())
+            loginView()
+//            ContentView()
+//                .environmentObject(booksDataManager())
+           
         }else{
             VStack{
                 VStack{
