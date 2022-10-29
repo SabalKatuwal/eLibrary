@@ -17,6 +17,7 @@ struct homeView: View {
             profileView()
         }
         
+        
         Spacer()
         
         tabBar(selectedTab: $selectedTab)
