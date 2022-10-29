@@ -34,6 +34,7 @@
 		A6A30D482903E40D00D8B875 /* bookDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D472903E40D00D8B875 /* bookDetailView.swift */; };
 		A6A30D4A290426BC00D8B875 /* splashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D49290426BC00D8B875 /* splashScreenView.swift */; };
 		A6A30D4C2905497E00D8B875 /* loginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D4B2905497E00D8B875 /* loginView.swift */; };
+		A6A30D4E290D2FC300D8B875 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D4D290D2FC200D8B875 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +64,7 @@
 		A6A30D472903E40D00D8B875 /* bookDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = bookDetailView.swift; sourceTree = "<group>"; };
 		A6A30D49290426BC00D8B875 /* splashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splashScreenView.swift; sourceTree = "<group>"; };
 		A6A30D4B2905497E00D8B875 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
+		A6A30D4D290D2FC200D8B875 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				A6A30D2A28FFC1BE00D8B875 /* Book.swift */,
+				A6A30D4D290D2FC200D8B875 /* User.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				A6A30D422901561300D8B875 /* homeViewStaff.swift in Sources */,
 				A68CF5A628CDCEAA0032993E /* eLibraryApp.swift in Sources */,
 				A6A30D3A29014C0D00D8B875 /* scanQRView.swift in Sources */,
+				A6A30D4E290D2FC300D8B875 /* User.swift in Sources */,
 				A6A30D2128FE2ABC00D8B875 /* tabBar.swift in Sources */,
 				A6A30D4A290426BC00D8B875 /* splashScreenView.swift in Sources */,
 				A6A30D1528FDAB8B00D8B875 /* homeView.swift in Sources */,

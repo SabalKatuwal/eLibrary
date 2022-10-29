@@ -18,7 +18,26 @@ class userLogging: ObservableObject{
         isUserLoggedOut.toggle()
         try? Auth.auth().signOut()
     }
+    
+    
+    @Published var fetchedUser = ""
+    func fetchUser(){
+        guard let uid = Auth.auth().currentUser?.uid else{
+            print("couldnot find firestore userID")
+            return
+        }
+        Firestore.firestore().collection("users").document(uid).getDocument { snapshot, error in
+            if let error = error{
+                print("Failed to fetch user :\(error)")
+                return
+            }
+            guard let data = snapshot?.data() else {return}
+            print(data)
+                
+        }
+    }
 }
+
 
 
 //user seperate login to give prevelage
