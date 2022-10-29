@@ -16,9 +16,13 @@ struct eLibraryApp: App {
         FirebaseApp.configure()
     }
     
+    
+    
     var body: some Scene {
         WindowGroup {
             splashScreenView()
+                .environmentObject(booksDataManager())
+                .environmentObject(userLogging())
             
             ///below code is for ContentView
                 //.environmentObject(userLogin())  //also staffLogin()
