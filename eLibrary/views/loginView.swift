@@ -17,8 +17,9 @@ struct loginView: View {
     @State private var email = ""
     @State private var password = ""
     
-    @State var loginErrorMessage = ""
-    @State var vayo = false
+    @State private var loginErrorMessage = ""
+    @State private var vayo = false
+    
     
 //    var body: some View{
 //        if isLogedIn{
@@ -124,7 +125,7 @@ struct loginView: View {
         Auth.auth().signIn(withEmail: email, password: password){result, error in
             if let error = error{
                 //print("Failed to login user : \(error)")
-                self.loginErrorMessage = ("Failed to register user : \(error)")
+                self.loginErrorMessage = ("Failed to login user : \(error)")
                 return
             }else{
                 //print("Successfully loggedin: \(result?.user.uid ?? "")")
@@ -135,15 +136,18 @@ struct loginView: View {
         }
     }
     
+    
+    
 }
+
 
 struct loginView_Previews: PreviewProvider {
     static var previews: some View {
         loginView()
 //        loginView()
 //            .preferredColorScheme(.light)
-            
-            
-            
+
+
+
     }
 }

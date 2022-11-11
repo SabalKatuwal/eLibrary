@@ -10,7 +10,11 @@ import SwiftUI
 import Firebase
 
 //here just to user this isUserLoggedIn state object by all other views we made observable class
-class userLogging: ObservableObject{
+class userDataManager: ObservableObject{
+    
+    init(){
+        fetchUser()
+    }
     
     @Published var isUserLoggedOut = false
     //see 9:40 of chat 07 if bug appear in logout
@@ -20,9 +24,10 @@ class userLogging: ObservableObject{
     }
     
     
-    @Published var fetchedUser = ""
-    func fetchUser(){
-        guard let uid = Auth.auth().currentUser?.uid else{
+    @Published var userInfo :User?
+    private func fetchUser(){
+        guard let uid = Auth.auth().currentUser?.uid
+        else{
             print("couldnot find firestore userID")
             return
         }
@@ -31,11 +36,21 @@ class userLogging: ObservableObject{
                 print("Failed to fetch user :\(error)")
                 return
             }
-            guard let data = snapshot?.data() else {return}
-            print(data)
-                
+            
+            DispatchQueue.main.async {
+                guard let data = snapshot?.data() else {
+                    print("No data found")
+                    return
+                }
+                //passing data to User dataStructure
+                let uid = data["uid"] as? String ?? ""
+                let email = data["email"] as? String ?? ""
+                self.userInfo = User(uid: uid, email: email)
+            }
         }
     }
+    
+
 }
 
 
