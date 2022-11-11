@@ -11,12 +11,16 @@ import Firebase
 struct profileView: View {
     @State private var shouldShowLogoutOption = false
     
-    @EnvironmentObject var logout:userLogging
+    @EnvironmentObject var userdatamanager:userDataManager
+//    init(){
+//        userdatamanager.fetchUser()
+//    }
     var body: some View {
         VStack {
             
             HStack {
                 Text("Profile view ")
+                
                 Spacer()
                 Button {
                     shouldShowLogoutOption.toggle()
@@ -29,19 +33,20 @@ struct profileView: View {
             .actionSheet(isPresented: $shouldShowLogoutOption){
                 .init(title: Text("Setting"), message: Text("What do you want to do"), buttons: [
                     .destructive(Text("LogOut"), action: {
-                        logout.handleLogout()
+                        userdatamanager.handleLogout()
                         print("do logout")
                     }),
                     .cancel()
                 ])
             }
-            .fullScreenCover(isPresented: $logout.isUserLoggedOut, onDismiss: nil) {
+            .fullScreenCover(isPresented: $userdatamanager.isUserLoggedOut, onDismiss: nil) {
 //                loginView(didCompleteLoginProcess: {
 //                    self.logout.isUserLoggedOut = false
 //                })
                 loginView()
             }
-            
+          Spacer()
+            Text("User: \(userdatamanager.userInfo?.email ?? "")")
         }
     }
 }
@@ -49,6 +54,6 @@ struct profileView: View {
 struct profileView_Previews: PreviewProvider {
     static var previews: some View {
         profileView()
-            .preferredColorScheme(.dark)
+//            .environmentObject(userDataManager())
     }
 }
