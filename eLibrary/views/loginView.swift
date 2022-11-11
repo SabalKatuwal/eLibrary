@@ -103,7 +103,7 @@ struct loginView: View {
 //            }
         }
     }
-    private func handleAction(){
+     func handleAction(){
         if isLogedIn{
             viewModel.login(withEmail: email, password: password)
             

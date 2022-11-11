@@ -13,6 +13,7 @@ struct homeView: View {
         
         if selectedTab == .home{
             bookListView()
+            
         }else {
             profileView()
         }
