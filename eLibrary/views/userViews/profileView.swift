@@ -11,10 +11,9 @@ import Firebase
 struct profileView: View {
     @State private var shouldShowLogoutOption = false
     
-    @EnvironmentObject var userdatamanager:userDataManager
-//    init(){
-//        userdatamanager.fetchUser()
-//    }
+//    @EnvironmentObject var userdatamanager:userDataManager
+    @EnvironmentObject var viewModel: authViewModel
+
     var body: some View {
         VStack {
             
@@ -33,20 +32,19 @@ struct profileView: View {
             .actionSheet(isPresented: $shouldShowLogoutOption){
                 .init(title: Text("Setting"), message: Text("What do you want to do"), buttons: [
                     .destructive(Text("LogOut"), action: {
-                        userdatamanager.handleLogout()
-                        print("do logout")
+                        viewModel.logOut()
                     }),
                     .cancel()
                 ])
             }
-            .fullScreenCover(isPresented: $userdatamanager.isUserLoggedOut, onDismiss: nil) {
-//                loginView(didCompleteLoginProcess: {
-//                    self.logout.isUserLoggedOut = false
-//                })
-                loginView()
-            }
-          Spacer()
-            Text("User: \(userdatamanager.userInfo?.email ?? "")")
+//            .fullScreenCover(isPresented: $userdatamanager.isUserLoggedOut, onDismiss: nil) {
+////                loginView(didCompleteLoginProcess: {
+////                    self.logout.isUserLoggedOut = false
+////                })
+//                loginView()
+//            }
+        
+            //Text("User: \(userdatamanager.userInfo?.email ?? "")")
         }
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A642D1EE291E01650082133E /* authViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A642D1ED291E01650082133E /* authViewModel.swift */; };
 		A68CF5A628CDCEAA0032993E /* eLibraryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68CF5A528CDCEAA0032993E /* eLibraryApp.swift */; };
 		A68CF5A828CDCEAA0032993E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68CF5A728CDCEAA0032993E /* ContentView.swift */; };
 		A68CF5AA28CDCEAB0032993E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68CF5A928CDCEAB0032993E /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A642D1ED291E01650082133E /* authViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authViewModel.swift; sourceTree = "<group>"; };
 		A68CF5A228CDCEAA0032993E /* eLibrary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eLibrary.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A68CF5A528CDCEAA0032993E /* eLibraryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eLibraryApp.swift; sourceTree = "<group>"; };
 		A68CF5A728CDCEAA0032993E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -81,6 +83,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A642D1EA291E01040082133E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A642D1ED291E01650082133E /* authViewModel.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
 		A68CF59928CDCEAA0032993E = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +116,7 @@
 				A6A30D1628FDB04C00D8B875 /* models */,
 				A6A30D0E28FD4F3800D8B875 /* views */,
 				A6A30D2D28FFC26400D8B875 /* viewModel */,
+				A642D1EA291E01040082133E /* Authentication */,
 				A6A30D332900262600D8B875 /* extentions */,
 				A68CF5A928CDCEAB0032993E /* Assets.xcassets */,
 				A68CF5B328CDD1270032993E /* GoogleService-Info.plist */,
@@ -308,6 +319,7 @@
 				A6A30D2528FE46E600D8B875 /* bookListView.swift in Sources */,
 				A6A30D442901570F00D8B875 /* tabBarStaff.swift in Sources */,
 				A6A30D4C2905497E00D8B875 /* loginView.swift in Sources */,
+				A642D1EE291E01650082133E /* authViewModel.swift in Sources */,
 				A6A30D2B28FFC1BE00D8B875 /* Book.swift in Sources */,
 				A6A30D37290033D900D8B875 /* View.swift in Sources */,
 				A6A30D462901862700D8B875 /* bookAssignView.swift in Sources */,

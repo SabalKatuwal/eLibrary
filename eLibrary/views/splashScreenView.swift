@@ -14,7 +14,7 @@ struct splashScreenView: View {
     var body: some View {
         if isActive{
             //view after splash screen
-            loginView()
+            ContentView()
 //            ContentView()
 //                .environmentObject(booksDataManager())
            

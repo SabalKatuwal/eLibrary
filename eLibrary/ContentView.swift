@@ -8,9 +8,34 @@ import SwiftUI
 import Firebase
 
 struct ContentView: View {
+    @EnvironmentObject var viewModel: authViewModel
+    var body: some View {
+        Group{
+            if viewModel.userSession != nil{
+                homeView()
+            }else{
+                loginView()
+            }
+        }
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+
+/*
+//OLD VIEW FOR LOGIN PAGE R LOGIN VIEW
+struct ContentView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var userIsLoggedIn = false
+    
+    
     
 //    @EnvironmentObject var user:userLogin
     //then use user.isUserLoggedIn method below
@@ -143,3 +168,5 @@ struct ContentView_Previews: PreviewProvider {
 //        }
 //    }
 //}
+
+ */

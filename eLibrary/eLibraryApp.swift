@@ -23,6 +23,7 @@ struct eLibraryApp: App {
             splashScreenView()
                 .environmentObject(booksDataManager())
                 .environmentObject(userDataManager())
+                .environmentObject(authViewModel())
             
             ///below code is for ContentView
                 //.environmentObject(userLogin())  //also staffLogin()

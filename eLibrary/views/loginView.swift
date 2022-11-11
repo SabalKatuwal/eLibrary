@@ -13,13 +13,15 @@ import Firebase
 struct loginView: View {
     //completion handler callback
 //    let didCompleteLoginProcess: () -> ()
-    @State private var isLogedIn = false
+    @State private var isLogedIn = false    //isLoggedIn just tracks state
     @State private var email = ""
     @State private var password = ""
-    
+    @State private var userName = ""
+
     @State private var loginErrorMessage = ""
     @State private var vayo = false
     
+    @EnvironmentObject var viewModel: authViewModel
     
 //    var body: some View{
 //        if isLogedIn{
@@ -64,6 +66,11 @@ struct loginView: View {
                             .autocapitalization(.none)
                         
                         SecureField("Password", text:$password)
+                        
+                        TextField("UserName", text: $userName)
+                            .autocapitalization(.none)
+                        
+                        
                     }
                     .padding(12)
                     .background(Color.theme.textFieldColor)
@@ -91,50 +98,51 @@ struct loginView: View {
             .padding()
             .foregroundColor(Color.theme.accent)
             .background(Color(.init(white: 0.0, alpha: 0.08)))
-            .fullScreenCover(isPresented: $vayo, onDismiss: nil) {
-                homeView()
-            }
+//            .fullScreenCover(isPresented: $vayo, onDismiss: nil) {
+//                homeView()
+//            }
         }
     }
     private func handleAction(){
         if isLogedIn{
-            login()
+            viewModel.login(withEmail: email, password: password)
             
         }else{
-            register()
+            viewModel.register(withEmail: email, password: password, userName: userName)
         }
     }
     
     
-    private func register(){
-        Auth.auth().createUser(withEmail: email, password: password){ result, error in
-            if let error = error{
-                //print("Failed to register user : \(error)")
-                self.loginErrorMessage = ("Failed to register user : \(error)")
-                return
-            }else{
-                //print("Successfully registered User : \(result?.user.uid ?? "")")
-                self.loginErrorMessage = ("Successfully registered User : \(result?.user.uid ?? "")")
-            }
-            
-        }
-    }
+//    private func register(){
+//        Auth.auth().createUser(withEmail: email, password: password){ result, error in
+//            if let error = error{
+//                //print("Failed to register user : \(error)")
+//                self.loginErrorMessage = ("Failed to register user : \(error)")
+//                return
+//            }else{
+//                //print("Successfully registered User : \(result?.user.uid ?? "")")
+//                self.loginErrorMessage = ("Successfully registered User : \(result?.user.uid ?? "")")
+//            }
+//            
+//        }
+//    }
     
-    private func login(){
-        //Auth.auth().signIn(withEmail: email, password: password){result, error in
-        Auth.auth().signIn(withEmail: email, password: password){result, error in
-            if let error = error{
-                //print("Failed to login user : \(error)")
-                self.loginErrorMessage = ("Failed to login user : \(error)")
-                return
-            }else{
-                //print("Successfully loggedin: \(result?.user.uid ?? "")")
-                self.loginErrorMessage = ("Successfully loggedIn User : \(result?.user.uid ?? "")")
-//                self.didCompleteLoginProcess()
-                self.vayo.toggle()
-            }
-        }
-    }
+    
+//    private func login(){
+//        //Auth.auth().signIn(withEmail: email, password: password){result, error in
+//        Auth.auth().signIn(withEmail: email, password: password){result, error in
+//            if let error = error{
+//                //print("Failed to login user : \(error)")
+//                self.loginErrorMessage = ("Failed to login user : \(error)")
+//                return
+//            }else{
+//                //print("Successfully loggedin: \(result?.user.uid ?? "")")
+//                self.loginErrorMessage = ("Successfully loggedIn User : \(result?.user.uid ?? "")")
+////                self.didCompleteLoginProcess()
+//                self.vayo.toggle()
+//            }
+//        }
+//    }
     
     
     

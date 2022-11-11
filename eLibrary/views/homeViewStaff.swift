@@ -9,8 +9,8 @@ import SwiftUI
 
 struct homeViewStaff: View {
     @State var selectedTab: Tab = .home    //onboardingView
+    
     var body: some View {
-        
         if selectedTab == .home{
             bookListView()
         }else if selectedTab == .scanBook{
@@ -22,8 +22,6 @@ struct homeViewStaff: View {
         Spacer()
         
         tabBarStaff(selectedTab: $selectedTab)
-            
-        
     }
 }
 
