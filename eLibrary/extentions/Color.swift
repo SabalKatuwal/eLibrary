@@ -19,6 +19,8 @@ struct ColorTheme{
     let dropShadow = Color("dropShadow")
     let backColor = Color("BackColor")
     let textFieldColor = Color("TextFieldColor")
-    
+    let darkShadow = Color("darkShadow")
+    let lightShadow = Color("lightShadow")
+    let textFieldColor1 = Color("textFieldColor1")
 }
 
