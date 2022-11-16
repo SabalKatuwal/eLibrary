@@ -13,8 +13,6 @@ struct homeViewStaff: View {
     var body: some View {
         if selectedTab == .home{
             bookListView()
-        }else if selectedTab == .scanBook{
-            scanQRView()
         }else{
             bookAssignView()
         }
@@ -23,6 +21,7 @@ struct homeViewStaff: View {
         
         tabBarStaff(selectedTab: $selectedTab)
     }
+    
 }
 
 struct homeViewStaff_Previews: PreviewProvider {

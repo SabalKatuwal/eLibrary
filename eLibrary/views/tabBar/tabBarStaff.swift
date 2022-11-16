@@ -12,12 +12,13 @@ import SwiftUI
 //but selectedTab is common name of User and Staff but they work seperately
 enum Tab: Int{
     case home = 0
-    case scanBook = 1
+    case addBook = 1
     case scanUser = 2
 }
 
 struct tabBarStaff: View {
     @Binding var selectedTab :Tab
+    @State private var showPopup = false
     
     var body: some View {
         //make tab bar with home, scanUser, scanBook and pass to tabBarButton View
@@ -35,16 +36,30 @@ struct tabBarStaff: View {
             }
             .tint(Color(.brown))
             
+//            Button {
+//                //Book is scanned
+//            selectedTab = .scanBook
+//
+//            } label: {
+//                tabBarButton(buttonImage: "qrcode.viewfinder",
+//                             buttonName: "Scan Book",
+//                             isActive: selectedTab == .scanBook)
+//            }
+//            .tint(Color(.brown))
+            
             Button {
-                //Book is scanned
-            selectedTab = .scanBook
-                
+                //add books
+                self.showPopup.toggle()
             } label: {
-                tabBarButton(buttonImage: "qrcode.viewfinder",
-                             buttonName: "Scan Book",
-                             isActive: selectedTab == .scanBook)
+                VStack(alignment: .center, spacing: 4){
+                    Image(systemName: "plus.circle.fill")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 42, height: 42)
+                    Text("Add Books")
+                }
             }
-            .tint(Color(.brown))
+            
             
             Button {
                 //Scan The User
@@ -59,6 +74,9 @@ struct tabBarStaff: View {
             .tint(Color(.brown))
         }
         .frame(height: 82)
+        .sheet(isPresented: $showPopup){
+            addBookView()
+        }
         
     }
     

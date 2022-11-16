@@ -11,7 +11,9 @@ import Firebase
 
 class booksDataManager: ObservableObject{
     @Published var books = [Book]()
-    
+    init(){
+        fetchBooks()
+    }
     
     //add function to db
     func addBooks(name: String, genere: String, author: String, numberOfBooks: String, ISBN: String){
@@ -26,9 +28,27 @@ class booksDataManager: ObservableObject{
         }
     }
     
-    init(){
-        fetchBooks()
-    }
+    
+    
+    
+//    func assignBooks(bookToAssign: Book, studentID: String){
+//        let db = Firestore.firestore()
+//        //set the data to update
+//        db.collection("AssignBooks").document(bookToAssign.id).setData(["numberOfBooks": bookToAssign.numberOfBooks - 1], merge: true){error in
+//            if error == nil{
+//                self.fetchBooks()
+//            }
+//        }
+//    }
+    
+    
+    
+    
+//    func noOfBooks(){
+//        //self.fetchBooks()
+//        let noBook = books.map { $0.numberOfBooks }
+//    }
+    
     
     
     //fetch/get book function
@@ -44,7 +64,7 @@ class booksDataManager: ObservableObject{
                                         name: d["name"] as? String ?? "",
                                         genere: d["genere"] as? String ?? "",
                                         author: d["author"] as? String ?? "",
-                                        numberOfBooks: d["numberOfBooks"] as? String ?? "",
+                                        numberOfBooks: d["numberOfBooks"] as? Int ?? 0,
                                         ISBN: d["ISBN"] as? String ?? "")
                         }
                     }
@@ -53,6 +73,54 @@ class booksDataManager: ObservableObject{
                 print(error!.localizedDescription)
             }
         }
+    }
+    
+    
+    @Published var takenBook = [TakenBook]()
+    
+    func fetchAssignedBooks(currentUserId: String){
+        var takenBookIDs:[String] = []
+        let db = Firestore.firestore()
+        db.collection("AssignBooks").whereField("s_id", isEqualTo: currentUserId)
+            .getDocuments() { (snapshot, err) in
+                
+//                print("RESULT \(snapshot.data())")
+                if let err = err {
+                    print("Error HAPPEN in getting documents: \(err)")
+                } else {
+                    
+                    if let docsnapshot = snapshot?.documents {
+                        for doc in docsnapshot {
+//                            print("AHAHHAHAHA: \(doc.data()["b_id"]!)")
+                            takenBookIDs.append(doc.data()["b_id"]! as! String)
+                            
+                        }
+                        self.takenBook.append(TakenBook(id: currentUserId, b_ids: takenBookIDs))
+                        
+                    }
+                    
+                    DispatchQueue.main.async {
+                        self.takenBook = snapshot!.documents.map{d in
+                            return TakenBook(id: d.documentID,
+                                             b_ids: takenBookIDs)
+//                                             b_ids: d["b_id"] as? [String] ?? [""])
+                        }
+                    }
+                    
+//                    for document in snapshot!.documents {
+//                        return TakenBook(id: document.documentID,
+//                                         b_ids: document["b_id"] as? Array ?? [])
+//                        print("\(document.documentID) =>\(document.data())")
+//                    }
+//                    
+                
+                }
+        }
+        
+        
+//        let db = Firestore.firestore()
+//        let result = db.document("AssignBoks/Svm1XfH6PBMSzEfFs6GoerSImMc2")
+//        print("FINAL DEBUG: \(result)")
     }
     
     func deleteBook(bookToDelete:Book){
@@ -78,6 +146,26 @@ class booksDataManager: ObservableObject{
         let db = Firestore.firestore()
         //set the data to update
         db.collection("Books").document(bookToUpdate.id).setData(["name":"updated  \(bookToUpdate.name)"], merge: true){error in
+            if error == nil{
+                self.fetchBooks()
+            }
+        }
+    }
+    
+    func assignBooks(bookToAssign: Book, studentID: String){
+        Firestore.firestore().collection("AssignBooks").addDocument(data: ["s_id": studentID, "b_id": bookToAssign.id]) { error in
+            if error == nil{
+                self.decreaseNumberOfBook(bookToDecrease: bookToAssign)
+            }else{
+                print(error!.localizedDescription)
+            }
+        }
+    }
+    
+    func decreaseNumberOfBook(bookToDecrease: Book){
+        let db = Firestore.firestore()
+        //set the data to update
+        db.collection("Books").document(bookToDecrease.id).setData(["numberOfBooks": bookToDecrease.numberOfBooks - 1], merge: true){error in
             if error == nil{
                 self.fetchBooks()
             }

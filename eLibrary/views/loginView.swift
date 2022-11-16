@@ -12,14 +12,13 @@ import Firebase
 
 struct loginView: View {
     //completion handler callback
-//    let didCompleteLoginProcess: () -> ()
     @State private var isLogedIn = false    //isLoggedIn just tracks state
     @State private var email = ""
     @State private var password = ""
     @State private var userName = ""
 
-    @State private var loginErrorMessage = ""
-    @State private var vayo = false
+//    @State private var loginErrorMessage = ""
+//    @State private var vayo = false
     
     @EnvironmentObject var viewModel: authViewModel
     
@@ -89,8 +88,8 @@ struct loginView: View {
                         .background(Color.blue)
                     }
                     
-                    Text(loginErrorMessage)
-                        .foregroundColor(Color.red)
+//                    Text(loginErrorMessage)
+//                        .foregroundColor(Color.red)
                     
                 }
                 .navigationTitle(isLogedIn ? "Login" : "Create Account")
@@ -106,6 +105,8 @@ struct loginView: View {
      func handleAction(){
         if isLogedIn{
             viewModel.login(withEmail: email, password: password)
+            
+            
             
         }else{
             viewModel.register(withEmail: email, password: password, userName: userName)
@@ -152,6 +153,7 @@ struct loginView: View {
 struct loginView_Previews: PreviewProvider {
     static var previews: some View {
         loginView()
+            .environmentObject(authViewModel())
 //        loginView()
 //            .preferredColorScheme(.light)
 
