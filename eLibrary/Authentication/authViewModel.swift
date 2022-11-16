@@ -10,12 +10,19 @@ import SwiftUI
 import Firebase
 
 class authViewModel: ObservableObject{
+//    @Published var userSession: FirebaseAuth.User?
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUserIs: User?
+    
     @State var didAuthenticateUser = false
     @State var notStaff = false
+    private let service = userService()
+    
     init() {
         self.userSession = Auth.auth().currentUser
         // print("DEBUG: user session is \(self.userSession)")
+        self.fetchUser()
+        
     }
     
     //function for login
@@ -29,6 +36,7 @@ class authViewModel: ObservableObject{
             }
             guard let user = result?.user else {return}
             self.userSession = user
+            self.fetchUser()
             print("DEBUG: User logged In success")
         }
     }
@@ -45,14 +53,17 @@ class authViewModel: ObservableObject{
             
             let data = ["email": email,
                         "username": userName.lowercased(),
-                        "uid": user.uid]
+//                        "uid": user.uid,
+                        "isStaff": false] as [String : Any]
             
             //uploaded addtional data to db
             Firestore.firestore().collection("users")
                 .document(user.uid)
                 .setData(data){_ in
                     self.didAuthenticateUser = true
+                    self.fetchUser()
                 }
+            
         }
     }
     
@@ -61,6 +72,14 @@ class authViewModel: ObservableObject{
         userSession = nil
         //logout from backend
         try? Auth.auth().signOut()
+    }
+    
+    //function to pass uid to fetchUser function of userService Struct
+    func fetchUser(){
+        guard let uid = self.userSession?.uid else { return }
+        service.fetchUser(withUid: uid) { user in   //completion handler
+            self.currentUserIs = user           //will set published property currentUserIs to user
+        }
     }
     
 }

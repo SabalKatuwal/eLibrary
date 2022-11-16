@@ -11,10 +11,11 @@ struct ContentView: View {
     @EnvironmentObject var viewModel: authViewModel
     var body: some View {
         Group{
-            if viewModel.userSession != nil{
-                homeView()
-            }else{
+//            homeView()
+            if viewModel.userSession == nil{
                 loginView()
+            }else{
+                userStaffLogic
             }
         }
     }
@@ -26,6 +27,16 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
+extension ContentView{
+    @ViewBuilder
+    var userStaffLogic: some View{
+        if viewModel.currentUserIs?.isStaff == true{
+            homeViewStaff()
+        }else{
+            homeView()
+        }
+    }
+}
 
 
 /*
