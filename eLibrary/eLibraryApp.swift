@@ -22,7 +22,7 @@ struct eLibraryApp: App {
         WindowGroup {
             splashScreenView()
                 .environmentObject(booksDataManager())
-                .environmentObject(userDataManager())
+//                .environmentObject(userDataManager())
                 .environmentObject(authViewModel())
             
             ///below code is for ContentView
