@@ -16,19 +16,23 @@ struct loginView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var userName = ""
-
-//    @State private var loginErrorMessage = ""
-//    @State private var vayo = false
+    
+    @State private var showImagePicker = false
+    @State private var selectedImage: UIImage?
+    @State private var profileImage: Image?
+    
+    //    @State private var loginErrorMessage = ""
+    //    @State private var vayo = false
     
     @EnvironmentObject var viewModel: authViewModel
     
-//    var body: some View{
-//        if isLogedIn{
-//            homeViewStaff()
-//        }else{
-//            content
-//        }
-//    }
+    //    var body: some View{
+    //        if isLogedIn{
+    //            homeViewStaff()
+    //        }else{
+    //            content
+    //        }
+    //    }
     
     var body: some View {
         NavigationView{
@@ -47,15 +51,26 @@ struct loginView: View {
                     if !isLogedIn{
                         Button {
                             //profile picture add see chat 03 for it
+                            showImagePicker.toggle()
                         } label: {
+                            if let profileImage = profileImage {
+                                profileImage
+                                    .resizable()
+                                    .frame(width: 150, height: 150)
+                                    .scaledToFill()
+                                    .clipShape(Circle())
+                            } else{
+                                VStack {
+                                    Image(systemName: "person.crop.circle.fill")
+                                        .resizable()
+                                        .frame(width: 150, height: 150)
+                                        .clipShape(Circle())
+                                }
+    //                            .overlay(RoundedRectangle(cornerRadius: 60)
+    //                                .stroke(Color.black)
+    //                            )
+                                }
                             
-                            VStack {
-                                Image(systemName: "person.crop.circle.fill")
-                                    .font(.system(size: 100))
-                            }
-                            .overlay(RoundedRectangle(cornerRadius: 64)
-                                .stroke(Color.black)
-                            )
                         }
                     }
                     
@@ -66,8 +81,11 @@ struct loginView: View {
                         
                         SecureField("Password", text:$password)
                         
-                        TextField("UserName", text: $userName)
-                            .autocapitalization(.none)
+                        if !isLogedIn{
+                            TextField("UserName", text: $userName)
+                                .autocapitalization(.none)
+                        }
+                        
                         
                         
                     }
@@ -88,62 +106,78 @@ struct loginView: View {
                         .background(Color.blue)
                     }
                     
-//                    Text(loginErrorMessage)
-//                        .foregroundColor(Color.red)
+                    //                    Text(loginErrorMessage)
+                    //                        .foregroundColor(Color.red)
                     
                 }
                 .navigationTitle(isLogedIn ? "Login" : "Create Account")
+                .sheet(isPresented: $showImagePicker, onDismiss: loadImage) {
+                    ImagePicker(selectedImage: $selectedImage)
+                }
             }
             .padding()
             .foregroundColor(Color.theme.accent)
             .background(Color(.init(white: 0.0, alpha: 0.08)))
-//            .fullScreenCover(isPresented: $vayo, onDismiss: nil) {
-//                homeView()
-//            }
+            //            .fullScreenCover(isPresented: $vayo, onDismiss: nil) {
+            //                homeView()
+            //            }
         }
+        .navigationViewStyle(.stack)       //HELPFULL (UI adkine hatayo)
     }
-     func handleAction(){
+    
+    func loadImage(){
+        guard let selectedImage = selectedImage else {
+            return
+        }
+        profileImage = Image(uiImage: selectedImage)
+    }
+    
+    func handleAction(){
         if isLogedIn{
             viewModel.login(withEmail: email, password: password)
             
-            
-            
         }else{
-            viewModel.register(withEmail: email, password: password, userName: userName)
+            
+            if let selectedImage = selectedImage {
+                viewModel.register(withEmail: email, password: password, userName: userName)
+                viewModel.uploadUserImage(selectedImage)
+            }
         }
+        
+        
     }
     
     
-//    private func register(){
-//        Auth.auth().createUser(withEmail: email, password: password){ result, error in
-//            if let error = error{
-//                //print("Failed to register user : \(error)")
-//                self.loginErrorMessage = ("Failed to register user : \(error)")
-//                return
-//            }else{
-//                //print("Successfully registered User : \(result?.user.uid ?? "")")
-//                self.loginErrorMessage = ("Successfully registered User : \(result?.user.uid ?? "")")
-//            }
-//            
-//        }
-//    }
+    //    private func register(){
+    //        Auth.auth().createUser(withEmail: email, password: password){ result, error in
+    //            if let error = error{
+    //                //print("Failed to register user : \(error)")
+    //                self.loginErrorMessage = ("Failed to register user : \(error)")
+    //                return
+    //            }else{
+    //                //print("Successfully registered User : \(result?.user.uid ?? "")")
+    //                self.loginErrorMessage = ("Successfully registered User : \(result?.user.uid ?? "")")
+    //            }
+    //
+    //        }
+    //    }
     
     
-//    private func login(){
-//        //Auth.auth().signIn(withEmail: email, password: password){result, error in
-//        Auth.auth().signIn(withEmail: email, password: password){result, error in
-//            if let error = error{
-//                //print("Failed to login user : \(error)")
-//                self.loginErrorMessage = ("Failed to login user : \(error)")
-//                return
-//            }else{
-//                //print("Successfully loggedin: \(result?.user.uid ?? "")")
-//                self.loginErrorMessage = ("Successfully loggedIn User : \(result?.user.uid ?? "")")
-////                self.didCompleteLoginProcess()
-//                self.vayo.toggle()
-//            }
-//        }
-//    }
+    //    private func login(){
+    //        //Auth.auth().signIn(withEmail: email, password: password){result, error in
+    //        Auth.auth().signIn(withEmail: email, password: password){result, error in
+    //            if let error = error{
+    //                //print("Failed to login user : \(error)")
+    //                self.loginErrorMessage = ("Failed to login user : \(error)")
+    //                return
+    //            }else{
+    //                //print("Successfully loggedin: \(result?.user.uid ?? "")")
+    //                self.loginErrorMessage = ("Successfully loggedIn User : \(result?.user.uid ?? "")")
+    ////                self.didCompleteLoginProcess()
+    //                self.vayo.toggle()
+    //            }
+    //        }
+    //    }
     
     
     
@@ -154,10 +188,10 @@ struct loginView_Previews: PreviewProvider {
     static var previews: some View {
         loginView()
             .environmentObject(authViewModel())
-//        loginView()
-//            .preferredColorScheme(.light)
-
-
-
+        //        loginView()
+        //            .preferredColorScheme(.light)
+        
+        
+        
     }
 }

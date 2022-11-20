@@ -5,6 +5,8 @@
 //  Created by Sabal on 11/11/22.
 //
 
+//BUG: register garepaxi nai fetchUser run bhunna ani profile info audaina
+
 import Foundation
 import SwiftUI
 import Firebase
@@ -13,6 +15,7 @@ class authViewModel: ObservableObject{
 //    @Published var userSession: FirebaseAuth.User?
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUserIs: User?
+    @Published var tempUserSession: FirebaseAuth.User?
     
     @State var didAuthenticateUser = false
     @State var notStaff = false
@@ -49,7 +52,8 @@ class authViewModel: ObservableObject{
                 return
             }
             guard let user = result?.user else {return}
-            self.userSession = user
+            self.tempUserSession = user
+            self.fetchUser()
             
             let data = ["email": email,
                         "username": userName.lowercased(),
@@ -81,5 +85,22 @@ class authViewModel: ObservableObject{
             self.currentUserIs = user           //will set published property currentUserIs to user
         }
     }
+    
+    //upload user Image
+    func uploadUserImage(_ image: UIImage){
+        print("AJHA AGHI")
+        guard let uid = tempUserSession?.uid else { return }
+        DispatchQueue.main.async {
+            imageUploader.uploadImage(image: image) { profileImageUrl in
+                Firestore.firestore().collection("users")
+                    .document(uid)
+    //                .updateData(["profileImageUrl": profileImageUrl])
+                    .updateData(["profileImageUrl": profileImageUrl], completion: { _ in
+                        self.userSession = self.tempUserSession
+                    })
+            }
+        }
+    }
+    
     
 }

@@ -16,6 +16,11 @@ struct tabBar: View {
     @Binding var selectedTab:Tabs
     
     var body: some View {
+        ZStack{
+            Color.theme.tabBarColor
+                .ignoresSafeArea()
+                .shadow(color: .gray, radius: 4, x: -2, y: -2)
+            
         HStack(alignment: .center){
             Button {
                 //list of books
@@ -72,12 +77,16 @@ struct tabBar: View {
             .tint(Color(.brown))
             
         }
-        .frame(height: 82)
+        .frame(height: 80)
+        }
+        .frame(height: 86)
+        
     }
 }
 
 struct tabBar_Previews: PreviewProvider {
     static var previews: some View {
         tabBar(selectedTab: .constant(.home))
+            
     }
 }

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import Kingfisher
 
 struct profileView: View {
     @State var shouldShowLogoutOption = false
@@ -59,11 +60,14 @@ extension profileView{
         ZStack(alignment: .bottomLeading){
             Color.theme.dropShadow
                 .ignoresSafeArea()
-            HStack{
-                Image(systemName: "person.crop.circle.fill")
-                    .font(.system(size: 70))
-                    .offset(x: 16, y: 20)
-            }
+            
+                KFImage(URL(string: viewModel.currentUserIs?.profileImageUrl ?? ""))
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(Circle())
+                    .frame(width: 140, height: 140)
+                    .offset(x: 5, y: 40)
+            
             HStack{
                 Spacer()
                 Button {
@@ -106,7 +110,7 @@ extension profileView{
                 .font(.subheadline)
                 .foregroundColor(Color.theme.secondaryText)
         }
-        .offset(y: 35)
+        .offset(y: 50)
         .padding(.horizontal)
     }
     

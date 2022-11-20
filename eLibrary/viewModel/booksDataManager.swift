@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Firebase
+import FirebaseFirestoreSwift
 
 
 class booksDataManager: ObservableObject{
@@ -64,8 +65,9 @@ class booksDataManager: ObservableObject{
                                         name: d["name"] as? String ?? "",
                                         genere: d["genere"] as? String ?? "",
                                         author: d["author"] as? String ?? "",
-                                        numberOfBooks: d["numberOfBooks"] as? Int ?? 0,
-                                        ISBN: d["ISBN"] as? String ?? "")
+                                        numberOfBooks: d["numberOfBooks"] as? Int ?? 1000,
+                                        ISBN: d["ISBN"] as? String ?? "",
+                                        bookImageUrl: d["bookImageUrl"] as? String ?? "")
                         }
                     }
                 }
@@ -152,6 +154,29 @@ class booksDataManager: ObservableObject{
         }
     }
     
+    func uploadBookImage(_ image: UIImage, ISBN: String){
+        var dID = ""
+        Firestore.firestore().collection("Books").whereField("ISBN", isEqualTo: ISBN)
+            .getDocuments() { (snapshot, err) in
+                if let err = err{
+                    print("DEBUG: Error while upload Book: \(err.localizedDescription)")
+                }else{
+                    if let snapshot = snapshot?.documents {
+                        for doc in snapshot {
+                            dID = doc.documentID
+                        }
+                    }
+
+                }
+
+            }
+        imageUploader.uploadImage(image: image) { bookImageUrl in
+            Firestore.firestore().collection("Books")
+                .document(dID)
+                .updateData(["bookImageUrl": bookImageUrl])
+        }
+    }
+    
     func assignBooks(bookToAssign: Book, studentID: String){
         Firestore.firestore().collection("AssignBooks").addDocument(data: ["s_id": studentID, "b_id": bookToAssign.id]) { error in
             if error == nil{
@@ -171,6 +196,8 @@ class booksDataManager: ObservableObject{
             }
         }
     }
+    
+    
     
 }
 

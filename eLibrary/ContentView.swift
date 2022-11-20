@@ -9,13 +9,19 @@ import Firebase
 
 struct ContentView: View {
     @EnvironmentObject var viewModel: authViewModel
+//    @ViewBuilder
     var body: some View {
         Group{
 //            homeView()
             if viewModel.userSession == nil{
                 loginView()
             }else{
-                userStaffLogic
+//                userStaffLogic
+                if viewModel.currentUserIs?.isStaff == true{
+                    homeViewStaff()
+                }else{
+                    homeView()
+                }
             }
         }
     }
@@ -27,16 +33,16 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-extension ContentView{
-    @ViewBuilder
-    var userStaffLogic: some View{
-        if viewModel.currentUserIs?.isStaff == true{
-            homeViewStaff()
-        }else{
-            homeView()
-        }
-    }
-}
+//extension ContentView{
+//    @ViewBuilder
+//    var userStaffLogic: some View{
+//        if viewModel.currentUserIs?.isStaff == true{
+//            homeViewStaff()
+//        }else{
+//            homeView()
+//        }
+//    }
+//}
 
 
 /*
