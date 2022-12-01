@@ -43,6 +43,8 @@
 		A6A30D4E290D2FC300D8B875 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6A30D4D290D2FC200D8B875 /* User.swift */; };
 		A6AA21DB2922954B00FAAD3B /* testProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6AA21DA2922954B00FAAD3B /* testProfileView.swift */; };
 		A6B4FC852929DEDA0039551D /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = A6B4FC842929DEDA0039551D /* Kingfisher */; };
+		A6B4FC89292C89600039551D /* sideMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B4FC88292C89600039551D /* sideMenuViewModel.swift */; };
+		A6B4FC8B292C8AC40039551D /* sideMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6B4FC8A292C8AC40039551D /* sideMenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +80,8 @@
 		A6A30D4B2905497E00D8B875 /* loginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = loginView.swift; sourceTree = "<group>"; };
 		A6A30D4D290D2FC200D8B875 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		A6AA21DA2922954B00FAAD3B /* testProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testProfileView.swift; sourceTree = "<group>"; };
+		A6B4FC88292C89600039551D /* sideMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sideMenuViewModel.swift; sourceTree = "<group>"; };
+		A6B4FC8A292C8AC40039551D /* sideMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sideMenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +226,7 @@
 			children = (
 				A6A30D1928FDB23D00D8B875 /* booksDataManager.swift */,
 				A6A30D2828FEA3BA00D8B875 /* login.swift */,
+				A6B4FC88292C89600039551D /* sideMenuViewModel.swift */,
 			);
 			path = viewModel;
 			sourceTree = "<group>";
@@ -250,6 +255,7 @@
 				A6A30D2628FE47B500D8B875 /* profileView.swift */,
 				A6AA21DA2922954B00FAAD3B /* testProfileView.swift */,
 				A6A30D452901862700D8B875 /* bookAssignView.swift */,
+				A6B4FC8A292C8AC40039551D /* sideMenuView.swift */,
 			);
 			path = userViews;
 			sourceTree = "<group>";
@@ -366,8 +372,10 @@
 				A62BAB4F2922602800238F55 /* userService.swift in Sources */,
 				A6A30D4A290426BC00D8B875 /* splashScreenView.swift in Sources */,
 				A6A30D1528FDAB8B00D8B875 /* homeView.swift in Sources */,
+				A6B4FC8B292C8AC40039551D /* sideMenuView.swift in Sources */,
 				A6A30D2328FE3D0000D8B875 /* tabBarButton.swift in Sources */,
 				A6A30D2528FE46E600D8B875 /* bookListView.swift in Sources */,
+				A6B4FC89292C89600039551D /* sideMenuViewModel.swift in Sources */,
 				A6A30D442901570F00D8B875 /* tabBarStaff.swift in Sources */,
 				A6A30D4C2905497E00D8B875 /* loginView.swift in Sources */,
 				A642D1EE291E01650082133E /* authViewModel.swift in Sources */,

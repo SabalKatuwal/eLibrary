@@ -23,5 +23,6 @@ struct ColorTheme{
     let lightShadow = Color("lightShadow")
     let textFieldColor1 = Color("textFieldColor1")
     let tabBarColor = Color("tabBarColor")
+    let sideBarBackgroundColor = Color("sideBarBackgroundColor")
 }
 

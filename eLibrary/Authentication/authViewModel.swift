@@ -52,8 +52,9 @@ class authViewModel: ObservableObject{
                 return
             }
             guard let user = result?.user else {return}
-            self.tempUserSession = user
             self.fetchUser()
+            self.tempUserSession = user
+            
             
             let data = ["email": email,
                         "username": userName.lowercased(),
@@ -97,6 +98,7 @@ class authViewModel: ObservableObject{
     //                .updateData(["profileImageUrl": profileImageUrl])
                     .updateData(["profileImageUrl": profileImageUrl], completion: { _ in
                         self.userSession = self.tempUserSession
+                        self.fetchUser()
                     })
             }
         }

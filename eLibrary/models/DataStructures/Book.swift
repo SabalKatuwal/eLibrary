@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import FirebaseFirestoreSwift
 
 struct Book:Identifiable{
     var id: String
@@ -16,8 +17,9 @@ struct Book:Identifiable{
     var numberOfBooks: Int
     var ISBN: String
     var bookImageUrl: String
+    var remainingDays: Int?
     
-    init(id: String, name: String, genere: String, author: String, numberOfBooks: Int, ISBN: String, bookImageUrl: String){
+    init(id: String, name: String, genere: String, author: String, numberOfBooks: Int, ISBN: String, bookImageUrl: String, remainingDays: Int?){
         self.id = id
         self.name = name
         self.genere = genere
@@ -25,6 +27,7 @@ struct Book:Identifiable{
         self.numberOfBooks = numberOfBooks
         self.ISBN = ISBN
         self.bookImageUrl = bookImageUrl
+        self.remainingDays = remainingDays
     }
     
 }
@@ -33,15 +36,22 @@ struct Book:Identifiable{
 //    var id: String
 //    var b_id: String
 //}
-struct TakenBook: Identifiable{
+struct TakenBook: Identifiable, Decodable{
 //    var id: ObjectIdentifier
-    var id: String
+    @DocumentID var id: String?
+    var s_id: String
     
 //    var b_ids: [arrayOfTakenBooks] = [arrayOfTakenBooks]()
     var b_ids: [String]
-    
-    init(id: String, b_ids:[String]){
-        self.id = id
-        self.b_ids = b_ids
-    }
+//    var daysRemaining: Int
+    var takenDate: String
+    var returnDate: String
+
+//    init(id: String, b_ids:[String], takenDate: Date, returnDate: Date){
+//        self.id = id
+//        self.b_ids = b_ids
+//        self.takenDate = takenDate
+//        self.returnDate = returnDate
+////        self.daysRemaining = daysRemaining
+//    }
 }

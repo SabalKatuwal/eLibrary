@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct addBookView: View {
     @EnvironmentObject var dataManager: booksDataManager
@@ -37,8 +38,15 @@ struct addBookView: View {
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     TextField("Genere", text: $genere)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
-                    TextField("Number of Books In Library", text: $numberOfBooks)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Number of Books In Library", text: $numberOfBooks)
+                    .keyboardType(.numberPad)
+                    .onReceive(Just(numberOfBooks)) { newValue in
+                                    let filtered = newValue.filter { "0123456789".contains($0) }
+                                    if filtered != newValue {
+                                        self.numberOfBooks = filtered
+                                    }
+                                }
+                        
                     TextField("ISBN number", text: $ISBN)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
@@ -68,7 +76,7 @@ struct addBookView: View {
                 if let selectedImage = selectedImage {
                     Button {
                         //add book operation
-                        dataManager.addBooks(name: name, genere: genere, author: author, numberOfBooks: numberOfBooks, ISBN: ISBN)
+                        dataManager.addBooks(name: name, genere: genere, author: author, numberOfBooks: Int(numberOfBooks)!, ISBN: ISBN)
                         
                         //add image to database
                         

@@ -6,19 +6,38 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct bookDetailView: View {
     let data: Book
+    @EnvironmentObject var viewModel: booksDataManager
     var body: some View {
-        VStack(spacing: 5){
-            Text("Book Name: \(data.name)")
-            Text("Author: \(data.author)")
-            Text("Genere: \(data.genere)")
-            Text("ISBN: \(data.ISBN)")
-            Text("Number of available Books: \(data.numberOfBooks)")
+        VStack( spacing: 5){
+            VStack(alignment: .center){
+                KFImage(URL(string: data.bookImageUrl))
+                    .resizable()
+                    .scaledToFit()
+                    .clipShape(Rectangle())
+                    .frame(width: 250, height: 200, alignment: .center)
+            }
+            
+            List{
+                Text("Book Name: \(data.name)")
+                    
+                Text("Author: \(data.author)")
+                
+                Text("Genere: \(data.genere)")
+                
+                Text("ISBN: \(data.ISBN)")
+                
+                Text("Number of available Books: \(data.numberOfBooks)")
+            }
+            
+                
+            Spacer()
         }
         .font(.headline)
-        .frame(width: 400 , height: 200)
+        .frame(width: 400 , height: 600)
         .background(
             ZStack {
                 Color.theme.dropShadow
@@ -43,7 +62,7 @@ struct bookDetailView: View {
 
 struct bookDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        bookDetailView(data: Book(id:"0", name: "book name", genere: "book genere", author: "book author", numberOfBooks: 0, ISBN: "isbn number", bookImageUrl: ""))
+        bookDetailView(data: Book(id:"0", name: "book name", genere: "book genere", author: "book author", numberOfBooks: 0, ISBN: "isbn number", bookImageUrl: "", remainingDays: 0))
     }
 }
 

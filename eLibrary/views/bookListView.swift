@@ -16,10 +16,10 @@ struct bookListView: View {
     @State var studentID = ""
     @State private var logoutOption = false
     @State private var showEditAlert = false
-    
+    @State private var showMenu = false
     var body: some View {
         
-        NavigationView {
+//        NavigationView {
             VStack {
                 //searchBarView()
                 
@@ -159,11 +159,26 @@ struct bookListView: View {
                     .cancel()
                 ])
             }
-            .navigationTitle("Books")
+//            .navigationTitle("Books")
+//            .navigationBarTitleDisplayMode(.inline)
+//            .toolbar {
+//                ToolbarItem(placement: .navigationBarLeading) {
+//                    Button {
+//                        //notification button
+//                        showMenu.toggle()
+//                    } label: {
+//                        Image(systemName: "bell.badge.circle.fill")
+//                            .frame(width: 25, height: 25)
+//                            .font(.title3)
+//                            .foregroundColor(Color.theme.accent)
+//                    }
+//
+//                }
+//            }
             
             
-        }
-        .navigationViewStyle(.stack)
+//        }
+//        .navigationViewStyle(.stack)
         
     }
 }

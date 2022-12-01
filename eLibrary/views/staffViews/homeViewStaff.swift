@@ -12,7 +12,15 @@ struct homeViewStaff: View {
     
     var body: some View {
         if selectedTab == .home{
-            bookListView()
+            NavigationView{
+                ZStack{
+                    bookListView()
+                }
+                .navigationTitle("Books")
+                .navigationBarTitleDisplayMode(.inline)
+            }
+            .navigationViewStyle(.stack)
+            
         }else{
             bookAssignView()
         }
