@@ -16,10 +16,12 @@ struct loginView: View {
     @State private var email = ""
     @State private var password = ""
     @State private var userName = ""
+    @State private var phoneNumber = ""
     
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
     @State private var profileImage: Image?
+   
     
     //    @State private var loginErrorMessage = ""
     //    @State private var vayo = false
@@ -84,6 +86,8 @@ struct loginView: View {
                         if !isLogedIn{
                             TextField("UserName", text: $userName)
                                 .autocapitalization(.none)
+                            TextField("PhoneNumber", text: $phoneNumber)
+                                .autocapitalization(.none)
                         }
                         
                         
@@ -139,7 +143,7 @@ struct loginView: View {
         }else{
             
             if let selectedImage = selectedImage {
-                viewModel.register(withEmail: email, password: password, userName: userName)
+                viewModel.register(withEmail: email, password: password, userName: userName, phoneNumber: phoneNumber)
                 viewModel.uploadUserImage(selectedImage)
             }
         }

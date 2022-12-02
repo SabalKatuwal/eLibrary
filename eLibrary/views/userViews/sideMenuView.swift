@@ -16,7 +16,7 @@ struct sideMenuView: View {
             VStack(alignment: .leading, spacing: 8){
                 profile
                 notificatins
-                    .padding(.vertical, 40)
+                    .padding(.vertical, 30)
                 
                 Spacer()
             }
@@ -31,7 +31,7 @@ struct sideMenuView: View {
 
 extension sideMenuView{
     var profile: some View{
-        VStack(spacing: 6){
+        VStack(spacing: 2){
             KFImage(URL(string: viewModel.currentUserIs?.profileImageUrl ?? ""))
                 .resizable()
                 .scaledToFit()
@@ -57,7 +57,7 @@ extension sideMenuView{
                
                     Text(option.description)
                         .fontWeight(.light)
-                        .padding(.vertical, 15)
+                        .padding()
                         .frame(width: 300, alignment: .leading)
                         .background(.gray.opacity(0.08))
                         .padding(.vertical, 7)

@@ -16,15 +16,28 @@ struct profileView: View {
     @State private var addAMonth = false
     
     var body: some View {
-        VStack(alignment: .leading){
-            headerView
-            userInfo
-            takenBooks
+        VStack{
+            VStack(alignment: .leading, spacing: 10){
+                headerView
+                userInfo
+            }
             
-        Spacer()
+            
+            VStack(alignment: .center, spacing: 15){
+                showBooksButton
+                    .padding(.vertical, 10)
+                takenBooks
+                    
+            }
+            .padding(.vertical, 60)
+            
+            
+            
+            Spacer()
+        }
+        .offset(y: 10)
+        
     }
-    
-}
 }
 
 
@@ -109,18 +122,17 @@ extension profileView{
                     .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.gray,lineWidth: 0.75))
                 
             }
-            .padding()
+//            .padding()
             
         }
         
+        
     }
     
-    //    var takenBooks: some View{
-    //
-    //    }
+    
     var takenBooks: some View{
         VStack(alignment: .leading, spacing: 4){
-            showBooksButton
+            
             
             ForEach(BookViewModel.assignedBooks){ b in
                 ZStack{
@@ -128,7 +140,7 @@ extension profileView{
                         .fill(Color.theme.background)
                         .frame(width: 350, height: 100)
                         .shadow(color: Color.theme.lightShadow, radius: 8, x: -8, y: -8)
-                            .shadow(color: Color.theme.darkShadow, radius: 8, x: 8, y: 8)
+                        .shadow(color: Color.theme.darkShadow, radius: 8, x: 8, y: 8)
                     HStack{
                         KFImage(URL(string: b.bookImageUrl))
                             .resizable()
@@ -139,13 +151,16 @@ extension profileView{
                                 .font(.headline)
                             Text(b.author)
                                 .font(.subheadline)
-                            Text("Remaining Days : \(addAMonth ? String(b.remainingDays! + 30 ) : String(b.remainingDays ?? 0))")
+                            Text("Remaining Days : \(String(b.remainingDays!))")
                                 .font(.subheadline)
+//                            Text("Remaining Days : \(addAMonth ? String(b.remainingDays! + 30 ) : String(b.remainingDays ?? 0))")
+//                                .font(.subheadline)
                         }
                         if b.remainingDays! < 5{
                             Button {
                                 addAMonth.toggle()
                                 self.BookViewModel.changeDate(b_id: b.id, currentUser: (viewModel.currentUserIs?.id)!)
+                                BookViewModel.fetchAssignedBook()
                             } label: {
                                 ZStack{
                                     RoundedRectangle(cornerRadius: 10)
@@ -163,16 +178,14 @@ extension profileView{
                             }
                             .opacity(addAMonth ? 0 : 1)
                         }
+                    }
+                    .padding()
                 }
-                .padding()
+                
             }
+//            .padding(.vertical, 40)
             
         }
-        .padding(.vertical, 32)
-        
-    }
-//    .offset(y: 40)
-    
     }
 }
 

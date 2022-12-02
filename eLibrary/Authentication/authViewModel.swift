@@ -10,6 +10,7 @@
 import Foundation
 import SwiftUI
 import Firebase
+import Alamofire
 
 class authViewModel: ObservableObject{
 //    @Published var userSession: FirebaseAuth.User?
@@ -45,7 +46,7 @@ class authViewModel: ObservableObject{
     }
     
     //function for register
-    func register(withEmail email: String, password: String, userName: String){
+    func register(withEmail email: String, password: String, userName: String, phoneNumber: String){
         Auth.auth().createUser(withEmail: email, password: password){ result, error in
             if let error = error{
                 print("DEBUG: Failed to register with error = \(error.localizedDescription)")
@@ -58,6 +59,7 @@ class authViewModel: ObservableObject{
             
             let data = ["email": email,
                         "username": userName.lowercased(),
+                        "phoneNumber": phoneNumber,
 //                        "uid": user.uid,
                         "isStaff": false] as [String : Any]
             
@@ -71,6 +73,27 @@ class authViewModel: ObservableObject{
             
         }
     }
+    
+    func sendSMS(){
+        let url = "https://api.twilio.com/2010-04-01/Accounts/AC6d478f4a70dc90633c9883538fbf03bb/Messages"
+
+                let parameters = ["From": "+14172166162", "To": "+9779866614278", "Body": "Heeeyy!"]
+
+
+
+                AF.request(url, method: .post, parameters: parameters)
+
+                    .authenticate(username: "AC6d478f4a70dc90633c9883538fbf03bb", password: "1f57298f30833b89a8bc73ab500d6008")
+
+                    .responseJSON { response in
+
+                        debugPrint(response)
+
+                    }
+                RunLoop.main.run()
+    }
+    
+    
     
     func logOut(){
         //making userSession to nil will determine what page to show(here login page is shown now)

@@ -11,8 +11,9 @@ import Kingfisher
 struct bookDetailView: View {
     let data: Book
     @EnvironmentObject var viewModel: booksDataManager
+    @EnvironmentObject var authVM: authViewModel
     var body: some View {
-        VStack( spacing: 5){
+        VStack(spacing: 5){
             VStack(alignment: .center){
                 KFImage(URL(string: data.bookImageUrl))
                     .resizable()
@@ -31,32 +32,37 @@ struct bookDetailView: View {
                 Text("ISBN: \(data.ISBN)")
                 
                 Text("Number of available Books: \(data.numberOfBooks)")
+                
+                if data.numberOfBooks == 0{
+                    Button {
+                        authVM.sendSMS()
+                    } label: {
+                        ZStack(alignment: .center){
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.theme.dropShadow)
+                                .frame(width: 60, height: 25)
+                                .shadow(color: Color.theme.lightShadow, radius:8, x: -4, y: -4)
+                                .shadow(color: Color.theme.darkShadow, radius: 8, x: 4, y: 4)
+                            Text("Request")
+                                .font(.subheadline).bold()
+                                .frame(width: 65, height: 30)
+                                .foregroundColor(.accentColor)
+                                .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.gray,lineWidth: 0.75))
+                        }
+                    }
+                }
+                
             }
+            
+            
+            
+
             
                 
             Spacer()
         }
         .font(.headline)
-        .frame(width: 400 , height: 600)
-        .background(
-            ZStack {
-                Color.theme.dropShadow
-                RoundedRectangle(cornerRadius: 50, style: .continuous)
-                    .foregroundColor(.white)
-                    .blur(radius: 4)
-                    .offset(x: -8, y: -8)
-                
-                RoundedRectangle(cornerRadius: 50, style: .continuous)
-                    .fill(
-                        LinearGradient(colors: [Color.theme.dropShadow, .white], startPoint: .topLeading, endPoint: .bottomTrailing)
-                    )
-                    .padding(2)
-                    .blur(radius: 2)
-            }
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 50, style: .continuous))
-        .shadow(color: Color.theme.dropShadow, radius: 20, x: 20, y: 20)
-        .shadow(color: .white, radius: 20, x: -20, y: -20)
+        
     }
 }
 

@@ -35,21 +35,21 @@ struct tabBar: View {
             .tint(Color(.brown))
             
             
-            //this button should appear for staff only
-            Button {
-                //add books
-                
-        
-                
-            } label: {
-                VStack(alignment: .center, spacing: 4){
-                    Image(systemName: "plus.circle.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 42, height: 42)
-                    Text("Add Books")
-                }
-            }
+//            //this button should appear for staff only
+//            Button {
+//                //add books
+//
+//
+//
+//            } label: {
+//                VStack(alignment: .center, spacing: 4){
+//                    Image(systemName: "plus.circle.fill")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 42, height: 42)
+//                    Text("Add Books")
+//                }
+//            }
             
             
             Button {

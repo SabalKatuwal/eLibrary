@@ -17,6 +17,7 @@
 		A68CF5AA28CDCEAB0032993E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68CF5A928CDCEAB0032993E /* Assets.xcassets */; };
 		A68CF5AD28CDCEAB0032993E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A68CF5AC28CDCEAB0032993E /* Preview Assets.xcassets */; };
 		A68CF5B428CDD1270032993E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A68CF5B328CDD1270032993E /* GoogleService-Info.plist */; };
+		A68DCF6C29395AEC0039E86F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = A68DCF6B29395AEC0039E86F /* Alamofire */; };
 		A693B28E2922746900BE7AFA /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A693B28D2922746900BE7AFA /* FirebaseFirestoreSwift */; };
 		A6A30D1128FD52C700D8B875 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A6A30D1028FD52C700D8B875 /* FirebaseAuth */; };
 		A6A30D1328FD52C700D8B875 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = A6A30D1228FD52C700D8B875 /* FirebaseFirestore */; };
@@ -90,6 +91,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6B4FC852929DEDA0039551D /* Kingfisher in Frameworks */,
+				A68DCF6C29395AEC0039E86F /* Alamofire in Frameworks */,
 				A6A30D1128FD52C700D8B875 /* FirebaseAuth in Frameworks */,
 				A6A30D1328FD52C700D8B875 /* FirebaseFirestore in Frameworks */,
 				A6A30D3E29014E1A00D8B875 /* CodeScanner in Frameworks */,
@@ -292,6 +294,7 @@
 				A693B28D2922746900BE7AFA /* FirebaseFirestoreSwift */,
 				A64A9C2E292927A3005DCB65 /* FirebaseStorage */,
 				A6B4FC842929DEDA0039551D /* Kingfisher */,
+				A68DCF6B29395AEC0039E86F /* Alamofire */,
 			);
 			productName = eLibrary;
 			productReference = A68CF5A228CDCEAA0032993E /* eLibrary.app */;
@@ -326,6 +329,7 @@
 				A6A30D3C29014E1A00D8B875 /* XCRemoteSwiftPackageReference "CodeScanner" */,
 				A693B28C2922746900BE7AFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				A6B4FC832929DEDA0039551D /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				A68DCF6A29395AEC0039E86F /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = A68CF5A328CDCEAA0032993E /* Products */;
 			projectDirPath = "";
@@ -591,6 +595,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		A68DCF6A29395AEC0039E86F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		A693B28C2922746900BE7AFA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -630,6 +642,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = A6A30D0F28FD52C700D8B875 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		A68DCF6B29395AEC0039E86F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A68DCF6A29395AEC0039E86F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		A693B28D2922746900BE7AFA /* FirebaseFirestoreSwift */ = {
 			isa = XCSwiftPackageProductDependency;
