@@ -27,15 +27,20 @@ struct bookDetailView: View {
                     
                 Text("Author: \(data.author)")
                 
+                Text("Edition: \(data.edition)")
+                
                 Text("Genere: \(data.genere)")
                 
                 Text("ISBN: \(data.ISBN)")
                 
+                Text("Book Location: \(data.bookLocation)")
+                
                 Text("Number of available Books: \(data.numberOfBooks)")
+                
                 
                 if data.numberOfBooks == 0{
                     Button {
-                        authVM.sendSMS()
+                        authVM.sendSMS(userEmail: authVM.currentUserIs!.email, bookName: data.name)
                     } label: {
                         ZStack(alignment: .center){
                             RoundedRectangle(cornerRadius: 10)
@@ -66,10 +71,10 @@ struct bookDetailView: View {
     }
 }
 
-struct bookDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        bookDetailView(data: Book(id:"0", name: "book name", genere: "book genere", author: "book author", numberOfBooks: 0, ISBN: "isbn number", bookImageUrl: "", remainingDays: 0))
-    }
-}
+//struct bookDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        bookDetailView(data: Book(id:"0", name: "book name", genere: "book genere", author: "book author", numberOfBooks: 0, ISBN: "isbn number", bookImageUrl: "", remainingDays: 0))
+//    }
+//}
 
 

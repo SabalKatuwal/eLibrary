@@ -22,9 +22,9 @@ class booksDataManager: ObservableObject{
     }
     
     //add function to db
-    func addBooks(name: String, genere: String, author: String, numberOfBooks: Int, ISBN: String){
+    func addBooks(name: String, genere: String, author: String, numberOfBooks: Int, ISBN: String, bookLocation: String, edition: String){
         let db = Firestore.firestore()
-        db.collection("Books").addDocument(data: ["name":name, "genere":genere, "author":author, "numberOfBooks":numberOfBooks, "ISBN": ISBN]) { error in
+        db.collection("Books").addDocument(data: ["name":name, "genere":genere, "author":author, "numberOfBooks":numberOfBooks, "ISBN": ISBN, "bookLocation": bookLocation, "edition": edition]) { error in
             if error == nil{
                 //so that views get updated after data is entered
                 self.fetchBooks()
@@ -73,7 +73,10 @@ class booksDataManager: ObservableObject{
                                         numberOfBooks: d["numberOfBooks"] as? Int ?? 500,
                                         ISBN: d["ISBN"] as? String ?? "",
                                         bookImageUrl: d["bookImageUrl"] as? String ?? "",
-                                        remainingDays: nil)
+                                        remainingDays: nil,
+                                        edition: d["edition"] as? String ?? "",
+                                        bookLocation: d["bookLocation"] as? String ?? ""
+                                        )
                         }
                     }
                 }
@@ -369,11 +372,14 @@ class booksDataManager: ObservableObject{
                                                let ISBN = data["ISBN"] as? String,
                                                let genere = data["genere"] as? String,
                                                let numberOfBooks = data["numberOfBooks"] as? Int,
-                                               let bookImageUrl = data["bookImageUrl"] as? String{
-
+                                               let bookImageUrl = data["bookImageUrl"] as? String,
+                                               let edition = data["edition"] as? String,
+                                               let bookLocation = data["bookLocation"] as? String{
                                                 
-
-                                                let newBook = Book(id: bookId, name: name, genere: genere, author: author, numberOfBooks: numberOfBooks, ISBN: ISBN, bookImageUrl: bookImageUrl, remainingDays: differenceOfDates)
+                                                
+                                                
+                                                let newBook = Book(id: bookId, name: name, genere: genere, author: author, numberOfBooks: numberOfBooks, ISBN: ISBN, bookImageUrl: bookImageUrl, remainingDays: differenceOfDates, edition: edition, bookLocation: bookLocation
+                                                )
 
                                                 
 

@@ -18,8 +18,10 @@ struct Book:Identifiable{
     var ISBN: String
     var bookImageUrl: String
     var remainingDays: Int?
+    var edition: String
+    var bookLocation: String
     
-    init(id: String, name: String, genere: String, author: String, numberOfBooks: Int, ISBN: String, bookImageUrl: String, remainingDays: Int?){
+    init(id: String, name: String, genere: String, author: String, numberOfBooks: Int, ISBN: String, bookImageUrl: String, remainingDays: Int?, edition: String, bookLocation: String){
         self.id = id
         self.name = name
         self.genere = genere
@@ -28,6 +30,8 @@ struct Book:Identifiable{
         self.ISBN = ISBN
         self.bookImageUrl = bookImageUrl
         self.remainingDays = remainingDays
+        self.bookLocation = bookLocation
+        self.edition = edition
     }
     
 }

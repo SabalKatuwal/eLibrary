@@ -74,16 +74,14 @@ class authViewModel: ObservableObject{
         }
     }
     
-    func sendSMS(){
+    func sendSMS(userEmail: String, bookName: String){
         let url = "https://api.twilio.com/2010-04-01/Accounts/AC6d478f4a70dc90633c9883538fbf03bb/Messages"
 
-                let parameters = ["From": "+14172166162", "To": "+9779866614278", "Body": "Heeeyy!"]
-
-
-
+                let parameters = ["From": "+14172166162", "To": "+9779866614278", "Body": "\(userEmail) has requested for the book \(bookName), Please return if not in use"]
+        
                 AF.request(url, method: .post, parameters: parameters)
 
-                    .authenticate(username: "AC6d478f4a70dc90633c9883538fbf03bb", password: "1f57298f30833b89a8bc73ab500d6008")
+                    .authenticate(username: "AC6d478f4a70dc90633c9883538fbf03bb", password: "8e37a1e55ac0c405bdf92dc94db72f67")
 
                     .responseJSON { response in
 

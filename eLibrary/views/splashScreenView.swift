@@ -22,8 +22,9 @@ struct splashScreenView: View {
             VStack{
                 VStack{
                     //replace image with logo of elibrary
-                    Image(systemName: "hare.fill")
-                        .font(.system(size: 80))
+                    Image("KuLogo")
+                        .resizable()
+                        .frame(width: 200, height: 200)
                         .foregroundColor(.red)
                     Text("E-Library")
                         .font(Font.custom("Baskerville-Bold", size: 26))

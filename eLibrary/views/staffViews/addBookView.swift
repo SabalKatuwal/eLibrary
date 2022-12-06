@@ -21,6 +21,8 @@ struct addBookView: View {
     @State private var showImagePicker = false
     @State private var selectedImage: UIImage?
     @State private var profileImage: Image?
+    @State var edition = ""
+    @State var bookLocation = ""
     
     @Environment(\.presentationMode) var presentationMode
     
@@ -39,6 +41,7 @@ struct addBookView: View {
                     TextField("Genere", text: $genere)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                 TextField("Number of Books In Library", text: $numberOfBooks)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.numberPad)
                     .onReceive(Just(numberOfBooks)) { newValue in
                                     let filtered = newValue.filter { "0123456789".contains($0) }
@@ -46,9 +49,14 @@ struct addBookView: View {
                                         self.numberOfBooks = filtered
                                     }
                                 }
-                        
+                    
                     TextField("ISBN number", text: $ISBN)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                TextField("bookLocation", text: $bookLocation)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                TextField("Edition", text: $edition)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
                     
                     
                     Button {
@@ -76,7 +84,7 @@ struct addBookView: View {
                 if let selectedImage = selectedImage {
                     Button {
                         //add book operation
-                        dataManager.addBooks(name: name, genere: genere, author: author, numberOfBooks: Int(numberOfBooks)!, ISBN: ISBN)
+                        dataManager.addBooks(name: name, genere: genere, author: author, numberOfBooks: Int(numberOfBooks)!, ISBN: ISBN, bookLocation: bookLocation, edition: edition)
                         
                         //add image to database
                         
