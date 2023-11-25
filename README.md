@@ -51,7 +51,7 @@
 
 ![image (1)](https://github.com/SabalKatuwal/eLibrary/assets/84259235/f304c318-7957-4376-9a41-2a268b88c515)
 
-eLibrary is an iOS application designed to streamline library management, developed using Swift and SwiftUI. Leveraging powerful frameworks like Firebase, CodeScanner, Alamofire, and Kingfisher, this app is tailored to meet the needs of both librarians and students, offering a seamless experience for managing and accessing library resources.
+eLibrary is an iOS application designed to streamline library management, developed using Swift and SwiftUI. Leveraging powerful frameworks like Firebase, CodeScanner, Alamofire, and Kingfisher. This app is tailored to meet the needs of both librarians and students, offering a seamless experience for managing and accessing library resources.
 
 Features:
 
